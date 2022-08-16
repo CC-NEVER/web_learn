@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        // const tasks=[];
+        // var output=function(i){
+        //     new Promise((resolve)=>{
+        //         setTimeout(()=>{
+        //             console.log(i);
+        //             resolve();
+        //         },500*i)
+        //     })
+        // }
+        // for(var i=0;i<5;i++){
+        //     tasks.push(output(i))
+        // }
+        // Promise.all(tasks).then(()=>{
+        //     // setTimeout(function(){
+        //         console.log(i);
+        //     // },500*i)
+        // })
+
+        //2
+        // function getSomething() {
+        // return "something";
+        // }
+
+        // async function testAsync() {
+        //     return Promise.resolve("hello async");
+        // }
+
+        // async function test() {
+        //     const v1 = await getSomething();
+        //     const v2 = await testAsync();
+        //     console.log(v1, v2);
+        // }
+
+        // test();
+
+        //3
+        // async function async1() {
+        // console.log("async1 start");
+        // await async2();
+        // console.log("async1 end");
+        // }
+
+        // async function async2() {
+        //     console.log("async2");
+        // }
+
+        // console.log("script start");
+
+        // setTimeout(function() {
+        //     console.log("setTimeout");
+        // }, 0);
+
+        // async1();
+
+        // new Promise(function(resolve) {
+        //     console.log("promise1");
+        //     resolve();
+        // }).then(function() {
+        //     console.log("promise2");
+        // });
+
+        // console.log("script end");
+
+        const promises = [
+        Promise.resolve('a'),
+        Promise.resolve('b'),
+        Promise.resolve('c'),
+        ];
+        Promise.all(promises)
+        .then((arr) => assert.deepEqual(
+            arr, ['a', 'b', 'c']
+        ));
+
+    </script>
+</html>

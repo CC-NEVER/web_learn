@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<h3>总价格：{{totleprice}}</h3>
+<h2>{{getfullname()}}</h2>
+<h2>{{fullname}}</h2>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data :{
+            firstName:'lebron',
+            lastName:'James', 
+            books:[
+              {id:110 , name :"niubi" , price:100},
+              {id:110 , name :"niubi" , price:100},
+              {id:110 , name :"niubi" , price:100},
+              {id:110 , name :"niubi" , price:100},
+            ]
+        },
+        computed: {
+          fullname:function(){
+            return this.firstName+" "+ this.lastName
+          },
+          totleprice:function(){
+            /* let result=0
+            for(i=0;i<=this.books.length;i++)
+            {
+              result+=this.books[i].price;
+            }
+            return result */
+            let result=0
+            for(let book of books)
+            {
+              result+=book.price;
+            }
+            return result
+          }
+        },
+        methods: {
+          getfullname() {
+            return this.firstName+' '+this.lastName
+          }
+        },
+    })
+</script>
+</body>
+</html>

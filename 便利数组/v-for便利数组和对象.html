@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in names">
+      {{item}}
+    </li>
+    <br>
+    <li v-for="(item,index) in names">
+     {{index+1}}.{{item}}
+    </li>
+    <br>
+    在便利对象时，如果只是获取一个值，那么获取的是value
+    <li v-for="(value,key,index) in info">{{value}}--{{key}}--{{index+1}}</li>
+  </ul>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊',
+            names: ["why","kobe","james","curry"],
+            info:{
+              name: "why",
+              ages: "2",
+              height:"1.88"
+            }
+        },
+
+    })
+</script>
+</body>
+</html>

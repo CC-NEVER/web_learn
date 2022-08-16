@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn @increment="changetotle" @decrement="changetotle"></cpn>
+  <h2>当前计数{{totle}}</h2>
+</div>
+<template id="cpn">
+  <div>
+    <button @click="increment">+1</button>
+    <button @click="decrement">-1</button>
+  </div>
+
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const cpn= {
+    template:"#cpn",
+    data() {
+      return {
+        counter:0
+      }
+    },
+    methods: {
+        increment() {
+          this.counter++;
+          this.$emit('increment', this.counter)
+        },
+        decrement() {
+          this.counter--;
+          this.$emit('decrement', this.counter)
+        }
+    },
+  }
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊',
+            totle:1,
+        },
+        components:{
+          cpn
+        },
+        methods: {
+          changetotle(counter){
+            this.totle=counter
+          }
+        },
+    })
+</script>
+</body>
+</html>

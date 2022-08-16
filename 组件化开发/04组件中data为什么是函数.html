@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+  <cpn1></cpn1>
+</div>
+<template id= cpnC>
+  <div>
+    <h2>当前计数 {{counter}}</h2>
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component("cpn1", {
+      template:"#cpnC",
+      data(){
+        return {
+          counter:0
+        }
+      },
+      methods:{
+        add(){
+          console.log("11")
+            this.counter++
+          },
+        sub() {
+          this.counter--
+          }
+      }
+    })
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊',
+        },
+
+    })
+</script>
+</body>
+</html>

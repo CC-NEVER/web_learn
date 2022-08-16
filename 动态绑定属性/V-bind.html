@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{message}}
+    <img :src="imgurl" alt=" ">
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊',
+            imgurl:'https://img20.360buyimg.com/seckillcms/s280x280_jfs/t14080/354/2673395141/298777/c6bf8563/5a4b67b3Nf6fbd103.jpg.webp'
+        }
+    })
+</script>
+</body>
+</html>

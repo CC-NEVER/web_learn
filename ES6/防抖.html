@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            background-color: green;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h2>深入js防抖与节流</h2>
+    <input placeholder="请输入电话" />
+    <div class="box"></div>
+    <script>
+        let  telInput=document.querySelector('input')
+        telInput.addEventListener('input',antiShake(demo,2000))
+        //防抖封装=》一段时间内只能有一辆赛车，有其他赛车将前面赛车清除，重新记时
+        // 固定的时间内，事件只允许发生一次
+        function antiShake(fn,wait){
+            let timeOut=null;
+            return args=>{
+                if(timeOut) clearTimeout(timeOut) 
+                timeOut=setTimeout(fn,wait);
+            }
+        }
+        function demo(){
+            console.log('发起请求')
+        }
+
+        //节流 =>保证一定时间内只调用一次处理函数  一定时间内的多个事情合为一个
+        //应用场景：1、提交表单  2、高频监听事件
+        let  box=document.querySelector(".box")
+        box.addEventListener("touchmove",throttle(demo,2000))
+
+        function throttle(event,time){
+            let  timer=null
+            return function(){
+                if(!timer){
+                    timer=setTimeout(()=>{
+                        event();
+                        timer=null
+                    },time);
+                }
+            }
+        }
+        //通过时间戳
+    </script>
+</body>
+</html>

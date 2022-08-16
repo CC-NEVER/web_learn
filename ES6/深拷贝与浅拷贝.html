@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<!-- 深拷贝浅拷贝几种方法 https://juejin.cn/post/6844904197595332622 -->
+
+<!-- 对象赋值 -->
+<script>
+    let obj1 = {
+    name : '浪里行舟',
+    arr : [1,[2,3],4],
+    };
+    let obj2 = obj1;
+    obj2.name = "阿浪";
+    obj2.arr[1] =[5,6,7] ;
+    console.log('obj1',obj1) // obj1 { name: '阿浪', arr: [ 1, [ 5, 6, 7 ], 4 ] }
+    console.log('obj2',obj2) // obj2 { name: '阿浪', arr: [ 1, [ 5, 6, 7 ], 4 ] }
+
+
+    // 手写浅拷贝
+    function shallowClone(source) {
+    var target = {};
+    for(var i in source) {
+        if (source.hasOwnProperty(i)) {
+            target[i] = source[i];
+         }
+     }
+    return target;
+    }
+    /* 浅拷贝实现方式
+    1、Object.assign()  Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。
+    2、函数库lodash的_.clone方法
+    3、展开运算符...
+    4、Array.prototype.slice()
+    5、Array.prototype.concat()
+    */
+
+   //手写深拷贝
+   let obj3 = {
+    name : '浪里行舟',
+    arr : [1,[2,3],4],
+    };
+    let obj4=deepClone(obj1)
+    obj4.name = "阿浪";
+    obj4.arr[1] = [5,6,7] ; // 新对象跟原对象不共享内存
+    // 这是个深拷贝的方法
+    function deepClone(obj) {
+        if (obj === null) return obj; 
+        if (obj instanceof Date) return new Date(obj);
+        if (obj instanceof RegExp) return new RegExp(obj);
+        if (typeof obj !== "object") return obj;
+        let cloneObj = new obj.constructor();
+        for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            // 实现一个递归拷贝
+            cloneObj[key] = deepClone(obj[key]);
+        }
+        }
+            return cloneObj;
+        }
+    console.log('obj1',obj1) // obj1 { name: '浪里行舟', arr: [ 1, [ 2, 3 ], 4 ] }
+    console.log('obj4',obj4) // obj4 { name: '阿浪', arr: [ 1, [ 5, 6, 7 ], 4 ] }
+
+
+
+// 这是个深拷贝的方法
+function deepClone(obj, hash = new WeakMap()) {
+  if (obj === null) return obj; // 如果是null或者undefined我就不进行拷贝操作
+  if (obj instanceof Date) return new Date(obj);
+  if (obj instanceof RegExp) return new RegExp(obj);
+  // 可能是对象或者普通的值  如果是函数的话是不需要深拷贝
+  if (typeof obj !== "object") return obj;
+  // 是对象的话就要进行深拷贝
+  if (hash.get(obj)) return hash.get(obj);
+  let cloneObj = new obj.constructor();
+  // 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身
+  hash.set(obj, cloneObj);
+  for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+        // 实现一个递归拷贝
+        cloneObj[key] = deepClone(obj[key], hash);
+        }
+    }
+    return cloneObj;
+    }
+    let obj = { name: 1, address: { x: 100 } };
+    obj.o = obj; // 对象存在循环引用的情况
+    let d = deepClone(obj);
+    obj.address.x = 200;
+    console.log(d);
+
+
+/*   深拷贝的几种方法
+1.JSON.parse(JSON.stringify()) 这种方法虽然可以实现数组或对象深拷贝,但不能处理函数和正则
+2.函数库lodash的_.cloneDeep方法
+3、jquery 有提供一個$.extend可以用来做 Deep Copy
+*/
+</script>
+
+</html>

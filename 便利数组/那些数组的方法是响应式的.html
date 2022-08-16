@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<ul>
+  <li v-for="item in letters":key="item">{{item}}</li>
+</ul>
+<button @click="btnbutton">按钮</button>
+</div>
+<script src="../vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊',
+            letters:["a","b","d","c","e"],
+        },
+        methods: {
+          btnbutton() {
+
+/*            1.通过索引值修改数组中的元素 */
+/*             this.letters[0]="bbb"  非响应式*/
+
+/*            2.this.letters.push("aaa") 响应式*/
+ //           3.pop 响应式删除最后一个元素
+/*             this.letters.pop(); */
+//            4.shift删除第一个元素
+/*             this.letters.unshift(); */
+//            5.unshift 在数组第一个元素前面添加元素
+/*             this.letters.unshift("aa","bb","ccc"); */
+//            6.splice()作用：删除元素/插入元素/替换元素
+/*              splice(start(第一个元素是开始的位置),length(作用效果的长度),value(作用效果的值)) */
+              this.letters.splice(2,3,"n","m","l") 
+/*            7.sort()排序 可以传参数*/
+/*              this.letters.sort() */
+/*            8.reverse() */
+/*              this.letters.reverse() */
+/*            vue.set(要求改的对象，索引值，修改后的值)
+              vue.set(this.letters,0,"asasas") */
+          }
+        },
+    })
+</script>
+</body>
+</html>

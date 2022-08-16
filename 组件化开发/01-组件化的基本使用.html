@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!-- 使用组件 -->
+<!--   <cpn1></cpn1>
+  <cpn2></cpn2> -->
+  <cpn3></cpn3>
+</div>
+<!-- 抽离组件模板  方法1-->
+<!-- <script type="text/x-template" id='cpn'>
+<div>
+  <h2>我是标题</h2>
+  <h3>我是内容</h3>
+</div> -->
+<!-- template标签 -->
+</script>
+<template id="abc">
+  <div>
+    <h2>我是标题</h2>
+    <h3>我是内容</h3>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  /* 1.创建组件构造器对象 */
+/*   const cpnC = Vue.extend({
+    template:`
+    <div>
+      <h2>aaaaaa</h2>
+      <h3>dsdsdsdsd</h3>
+      <h4>dasdadada</h4>
+    </div>`
+  }) */
+  
+    /* `可以换行` */
+  //2.注册组件
+  //全局组件的语法糖写法
+/*   Vue.component('cpn1', {
+    template:`
+    <div>
+      <h2>aaaaaa</h2>
+      <h3>dsdsdsdsd</h3>
+      <h4>dasdadada</h4>
+    </div>`
+  })  */
+  //抽离组件模板
+/*   Vue.component('cpn1', {
+    template:'#cpn'
+  }) */
+  Vue.component('cpn3', {
+    template:'#abc'
+  })
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊'
+        },
+        components:{
+          'cpn2':{
+            template:`
+              <div>
+                <h2>a111</h2>
+                <h3>dsdsdsdsd</h3>
+                <h4>d2222</h4>
+              </div>`
+          }
+      }
+    })
+</script>
+</body>
+</html>

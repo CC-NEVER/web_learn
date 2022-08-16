@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" conte nt="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function bitSum(n) {
+    let res = 0
+    while (n) {
+      res += n % 10
+      n = Math.floor(n / 10)
+    }
+    return res
+  }
+  console.log(bitSum(454354353))
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <my-cpn></my-cpn>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const cpnC = Vue.extend({
+    template:`
+    <div>
+    <h2>我是标题</h2>
+    <h3>哈哈哈哈</h3>
+    </div>`
+  })
+ /*    Vue.component("my-cpn", cpnC)  *///全局组件意味着可以在多个vue实例下使用
+    const app=new Vue({
+        el:'#app',
+        data :{
+            message:'你好啊'
+        },
+        components: {
+          //cpn使用组件时的标签名
+          cpn:cpnC
+        }//局部的组件，只能用于该实例下
+    })
+</script>
+</body>
+</html>

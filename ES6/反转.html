@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let str='www.meituan.com'
+    // let array=str.split('.')
+    // array.reverse();
+    // str=array.join('.')
+    // console.log(str);
+    // var a =1;
+    // var b = a;
+    // b=2
+    // console.log(a);//?
+    // let name = 'global';
+    // let name = 'global';
+    // const obj = {
+    //     name:'obj',
+    //     test:function(){
+    //         let name = 'scope';
+    //         console.log(this.name);
+    //     }
+    // }
+    // const test = obj.test;
+    // test();//?
+    // obj.test();//?
+    var pro = new Promise((res,rej)=>{
+    res(1);
+    });
+    pro.then(res=>{
+        console.log(res);
+    });
+    setTimeout(()=>{
+    console.log(2);
+    })
+    pro.then(res=>{
+        console.log(res);
+    })
+
+</script>
+</html>

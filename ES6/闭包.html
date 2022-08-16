@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>深度剖析闭包</h2>
+    <script>
+        //1、闭包是什么-- 方法里返回一个方法
+        // function a(){
+        //     let a1=1;
+        //     return function(){
+        //         return a1;
+        //     }
+        // }
+        //2、闭包存在的意义？
+        //2、1延长变量的生命周期  永久存在内存中
+        //2、2创建私有环境
+
+        //作用域链 就近原则
+        // let a='小明'
+        // function fn2(){
+        //     let name='小白'
+        //     function fn3(){
+        //         let  name='小红'
+        //         console.log(name);
+        //     }
+        //     fn3()
+        // }
+        // fn2()
+
+        //闭包是沟通内外部方法桥梁
+        function outer(){
+            let a1=111;
+            let a2=222;
+            return function inner(){
+                return a1;
+            }
+        }
+        function fn5(){
+            let getInnerData=outer();
+            console.dir(getInnerData);
+        }
+        fn5();
+        //闭包会常驻内存=>慎用闭包，手动回收
+
+        //vue中data（）为什么是函数 =>就是一个闭包 创建私有环境
+        let makeCouder=function(){
+            let  num=0;
+            function changeBy(val){
+                num+=val
+            }
+
+            return {
+                add:function(){
+                    changeBy(-1)
+                },
+                reduce:function(){
+                    changeBy(-1)
+                },
+                value:function(){
+                    return num
+                }
+            }
+        }
+
+        let couter1=makeCouder()
+        let couter2=makeCouder()
+
+        couter1.add()
+        couter1.add()
+        couter2.add()
+        console.log(couter2.value());  //1
+        console.log(couter1.value());  //2
+        //都有独立的词法作用域
+        //面向对象编程----数据的隐藏和封装
+    </script>
+</body>
+</html>
